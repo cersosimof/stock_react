@@ -8,17 +8,17 @@ class Selector extends React.Component {
         return (
             <div>
                 <nav className="navbar navbar-expand-lg navbar-light bg-light">
-                    <a className="navbar-brand">STOCK</a>
+                    <a className="navbar-brand" href="/pepe">STOCK</a>
                     <div className="collapse navbar-collapse" id="navbarText">
                         <ul className="navbar-nav mr-auto">
                         <li className="nav-item">
-                            <a className="nav-link" id="ingresar" onClick={this.props.handleState}>Ingresar</a>
+                            <a className="nav-link" id="ingresar" href="/pepe" onClick={this.props.handleState}>Ingresar</a>
                         </li>
                         <li className="nav-item">
-                            <a className="nav-link" id="entregar" onClick={this.props.handleState}>Entregar</a>
+                            <a className="nav-link" id="entregar" href="/pepe" onClick={this.props.handleState}>Entregar</a>
                         </li>
                         <li className="nav-item" >
-                            <a className="nav-link" id="consultar" onClick={this.props.handleState}>Consultar</a>
+                            <a className="nav-link" id="consultar" href="/pepe" onClick={this.props.handleState}>Consultar</a>
                         </li>
                         </ul>
                         <span className="navbar-text">

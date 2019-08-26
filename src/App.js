@@ -5,16 +5,35 @@ import Cuerpo from './componentes/Cuerpo';
 
 class App extends React.Component {
   
-  state = {
-    opcion : "ingresar"
+  constructor(){
+    super();
+    this.state = ({
+      db : [],
+      opcion : "ingresar"
+    });
+    this.cargarBase();
+  }
+
+  cargarBase(){
+    fetch("http://localhost/stock_react/back/")
+    .then((response)=>response.json())
+    .then((responseJson)=>
+    {
+      this.setState({ 
+        db: responseJson
+      })
+      console.log(this.state.db)
+    })
   }
 
   handleState = e => {
     this.setState({
         opcion : e.target.id
     })
-    console.log(e.target.id)
-  }
+  };
+
+
+
 
   render() {
     return (

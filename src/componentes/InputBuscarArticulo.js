@@ -3,6 +3,7 @@ import './InputBuscarArticulo.css';
 
 class Buscador extends React.Component {
 
+    
     state = {
         recuerdaArticulo : true
     }    
@@ -35,7 +36,11 @@ class Buscador extends React.Component {
                         <div className="form-group col-md-10">
                             <select id="id_cat" className="form-control">
                             <option selected>Buscar Categoria...</option>
-                            <option>...</option>
+                            {/* { this.props.datos.map(
+                                    dato=>
+                                    <option>{dato.categoria}</option>
+                                )
+                            } */}
                             </select>
                         </div>
                         <div className="form-group col-md-10">
