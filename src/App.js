@@ -27,6 +27,7 @@ class App extends React.Component {
   // }
 
   handleState = e => {
+    e.preventDefault();
     this.setState({
         opcion : e.target.id
     })

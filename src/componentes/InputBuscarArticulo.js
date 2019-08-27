@@ -1,28 +1,28 @@
 import React from 'react';
 import './InputBuscarArticulo.css';
+import Select from './Select';
 
 class Buscador extends React.Component {
 
-    constructor(){
-        super();
+constructor(){
+    super();
         this.state = ({
-          db : [],
-          recuerdaArticulo : true
+            db : [],
+            recuerdaArticulo : true
         });
-        //this.cargarBase();
-      }
+    }
     
-      UNSAFE_componentWillMount(){
-        fetch("http://localhost/stock_react/back/")
-        .then((response)=>response.json())
-        .then((responseJson)=>
+    UNSAFE_componentWillMount(){
+    fetch("http://localhost/stock_react/back/")
+    .then((response)=>response.json())
+    .then((responseJson)=>
         {
-          this.setState({ 
+            this.setState({ 
             db: responseJson
-          })
+            })
         })
-      }
-    
+
+    }
 
     noRecuerdaArticulo = e => {
         this.setState({
@@ -30,6 +30,7 @@ class Buscador extends React.Component {
         })
     }
 
+    
     render() {
         if(this.state.recuerdaArticulo)
         {
@@ -49,28 +50,9 @@ class Buscador extends React.Component {
                 <div>
                     <div align="center">
                         <h4>Buscador de Articulo</h4>
-                        <div className="form-group col-md-10">
-                            <select id="id_cat" className="form-control">
-                            <option selected>Buscar Categoria...</option>
-                             { this.state.db.map(
-                                    dato=>
-                                    <option key={dato.id}>{dato.categoria}</option>
-                                )
-                            } 
-                            </select>
-                        </div>
-                        <div className="form-group col-md-10">
-                            <select id="id_marca" className="form-control">
-                            <option selected>Seleccione Marca</option>
-                            <option>...</option>
-                            </select>
-                        </div>
-                        <div className="form-group col-md-10">
-                            <select id="id_modelo" className="form-control">
-                            <option selected>Buscar Modelo...</option>
-                            <option>...</option>
-                            </select>
-                        </div> 
+                        <Select info={this.state.db}/>
+                        <Select />
+                        <Select />
                         <button type="button" class="btn btn-success">Ok</button>
                         <button type="button" onClick={this.noRecuerdaArticulo} class="btn btn-secondary">Cerrar</button>  
                     </div>
