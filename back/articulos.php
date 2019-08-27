@@ -87,7 +87,7 @@ class Articulo {
         header('Access-Control-Allow-Origin:*');
 
         $instance = ConnectDb::getInstance();
-        $sql = "SELECT categoria FROM articulos";
+        $sql = "SELECT id_articulo, categoria FROM articulos";
         $conn = $instance->ExecuteQuery($sql);
 
         $arr=[];
@@ -95,6 +95,7 @@ class Articulo {
 
         while ($fila = mysqli_fetch_assoc($conn)) {
             $arr[$i]=[
+                "id"=>$fila["id_articulo"],
                 "categoria"=>$fila["categoria"]
             ];
            $i++;

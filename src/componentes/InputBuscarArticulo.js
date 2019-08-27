@@ -3,10 +3,26 @@ import './InputBuscarArticulo.css';
 
 class Buscador extends React.Component {
 
+    constructor(){
+        super();
+        this.state = ({
+          db : [],
+          recuerdaArticulo : true
+        });
+        //this.cargarBase();
+      }
     
-    state = {
-        recuerdaArticulo : true
-    }    
+      UNSAFE_componentWillMount(){
+        fetch("http://localhost/stock_react/back/")
+        .then((response)=>response.json())
+        .then((responseJson)=>
+        {
+          this.setState({ 
+            db: responseJson
+          })
+        })
+      }
+    
 
     noRecuerdaArticulo = e => {
         this.setState({
@@ -36,11 +52,11 @@ class Buscador extends React.Component {
                         <div className="form-group col-md-10">
                             <select id="id_cat" className="form-control">
                             <option selected>Buscar Categoria...</option>
-                            {/* { this.props.datos.map(
+                             { this.state.db.map(
                                     dato=>
-                                    <option>{dato.categoria}</option>
+                                    <option key={dato.id}>{dato.categoria}</option>
                                 )
-                            } */}
+                            } 
                             </select>
                         </div>
                         <div className="form-group col-md-10">
