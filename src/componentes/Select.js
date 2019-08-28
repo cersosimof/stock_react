@@ -3,33 +3,33 @@ import './Selector.css';
 
 class Select extends React.Component {
     
-    constructor(){
-        super();
-        this.state = ({
-          db : [], 
-          estado: ''
-        });
-      }
+    state = ({
+        db : [],
+        estado : ''
+    })
 
-      accion = e => {
-        e.preventDefault();
-        console.log(this.props.info)
-      };
+    UNSAFE_componentWillMount(){
+        fetch(this.props.url)
+        .then((response)=>response.json())
+        .then((responseJson)=>
+            {
+                this.setState({ 
+                db: responseJson //Guarda la info en el primer select
+                })
+            })
+        }
 
     render() {
         return (
-            <div className="form-group col-md-10">
-            <select onChange={this.accion} id="id_cat" className="form-control">
-            <option  selected>Buscar Categoria...</option>
-             {/* this.state.db.map(
+            <div hidden={this.props.oculto} className="form-group col-md-10">
+                <select className="form-control" value={this.state.value} onChange={this.props.traeDatos}>
+                { this.state.db.map(
                     dato=>
-                    <option key={dato.id}>{dato.categoria}</option>
-                )
-             */} 
-                                 <option >fhfghfgh</option>
-                                 <option>fghfghfgh</option>
-            </select>
-        </div>
+                    <option key={dato.id}> {dato[this.props.contenido]} </option>
+                    )
+                    } 
+                </select>
+            </div>
         );
     }
 }

@@ -8,23 +8,9 @@ class App extends React.Component {
   constructor(){
     super();
     this.state = ({
-      //db : []
       opcion : "ingresar"
     });
-    //this.cargarBase();
   }
-
-  // cargarBase(){
-  //   fetch("http://localhost/stock_react/back/")
-  //   .then((response)=>response.json())
-  //   .then((responseJson)=>
-  //   {
-  //     this.setState({ 
-  //       db: responseJson
-  //     })
-  //     console.log(this.state.db)
-  //   })
-  // }
 
   handleState = e => {
     e.preventDefault();

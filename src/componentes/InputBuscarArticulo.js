@@ -4,32 +4,15 @@ import Select from './Select';
 
 class Buscador extends React.Component {
 
-constructor(){
-    super();
-        this.state = ({
-            db : [],
+    state = ({
             recuerdaArticulo : true
-        });
-    }
-    
-    UNSAFE_componentWillMount(){
-    fetch("http://localhost/stock_react/back/")
-    .then((response)=>response.json())
-    .then((responseJson)=>
-        {
-            this.setState({ 
-            db: responseJson
-            })
         })
-
-    }
 
     noRecuerdaArticulo = e => {
         this.setState({
             recuerdaArticulo : !this.state.recuerdaArticulo
         })
     }
-
     
     render() {
         if(this.state.recuerdaArticulo)
@@ -50,9 +33,8 @@ constructor(){
                 <div>
                     <div align="center">
                         <h4>Buscador de Articulo</h4>
-                        <Select info={this.state.db}/>
-                        <Select />
-                        <Select />
+                        <Select contenido="categoria" url="http://localhost/stock_react/back/"/>
+                        <Select contenido="marca" url="http://localhost/stock_react/back/segundoSelect.php?cat=discos"/>
                         <button type="button" class="btn btn-success">Ok</button>
                         <button type="button" onClick={this.noRecuerdaArticulo} class="btn btn-secondary">Cerrar</button>  
                     </div>

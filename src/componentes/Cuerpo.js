@@ -15,7 +15,7 @@ class Cuerpo extends React.Component {
                             <div id="info_ingresar">
                                 {/*PRESENTA INFO, ALERTAS*/}
                             </div>
-                                {<Buscador  id="_ingresar" titulo="a ingresar"/>}
+                            {<Buscador  id="_ingresar" titulo="a ingresar"/>}
                             <div className="form-group row" id="divCantidad">
                                 <label htmlFor="idCantidad" className="col-sm-2 col-form-label" id="labelCantidad">Cantidad a Ingresar</label>
                                 <div className="col-sm-10">

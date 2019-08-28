@@ -81,7 +81,6 @@ class Articulo {
     }
 
     function mostrarAlgo() {
-
         require 'ConnectDb.php';
         header('Content-Type: application/json');
         header('Access-Control-Allow-Origin:*');
@@ -100,10 +99,7 @@ class Articulo {
             ];
            $i++;
         }
-
         echo json_encode($arr);
-        
-
-
-}
+    }
+    
 }
