@@ -1,6 +1,6 @@
 import React from 'react';
 import './InputBuscarArticulo.css';
-import Select from './Select';
+import GrupoSelect from './GropuSelect';
 
 class Buscador extends React.Component {
 
@@ -33,8 +33,9 @@ class Buscador extends React.Component {
                 <div>
                     <div align="center">
                         <h4>Buscador de Articulo</h4>
-                        <Select contenido="categoria" url="http://localhost/stock_react/back/"/>
-                        <Select contenido="marca" url="http://localhost/stock_react/back/segundoSelect.php?cat=discos"/>
+
+                        <GrupoSelect/>
+
                         <button type="button" class="btn btn-success">Ok</button>
                         <button type="button" onClick={this.noRecuerdaArticulo} class="btn btn-secondary">Cerrar</button>  
                     </div>

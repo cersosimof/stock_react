@@ -3,13 +3,17 @@ import './Selector.css';
 
 class Select extends React.Component {
     
-    state = ({
+    constructor(){
+        super();
+        this.state = ({
+        url : "http://localhost/stock_react/back/",
         db : [],
         estado : ''
     })
-
+    }
+    
     UNSAFE_componentWillMount(){
-        fetch(this.props.url)
+        fetch(this.state.url)
         .then((response)=>response.json())
         .then((responseJson)=>
             {
@@ -22,7 +26,7 @@ class Select extends React.Component {
     render() {
         return (
             <div hidden={this.props.oculto} className="form-group col-md-10">
-                <select className="form-control" value={this.state.value} onChange={this.props.traeDatos}>
+                <select className="form-control" id={this.props.contenido} value={this.state.value} onChange={this.props.traerInfo}>
                 { this.state.db.map(
                     dato=>
                     <option key={dato.id}> {dato[this.props.contenido]} </option>
