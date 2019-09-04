@@ -4,31 +4,65 @@ import Select from './Select';
 
 class GrupoSelect extends React.Component {
 
-    state = ({
-        categoria : '',
-        tercer_select : ''
-    })
-
-    handleState = e => {
-        // console.log(this.state[e.target.id])
-        // console.log(e.target.value)
-        this.setState({
-            categoria : e.target.value
+    constructor(){
+        super();
+            this.state = ({
+            categoria : '',
+            db_categoria : [],
+            marca : '',
+            db_marca : [],
+            modelo : '',
+            db_modelo : [],
+            estado : ''
         })
-        console.log(this.state[e.target.id])
-        console.log(e.target.value)
-        
+         this.buscador('categoria');
+    }
+    
+    buscador(prop){
+        fetch("http://localhost/stock_react/back/index.php?cat="+this.state.categoria+"&marca="+this.state.marca)
+        .then((response)=>response.json())
+        .then((responseJson)=>
+            {
+                this.pepe(prop, responseJson)
+            })
+        }
 
+    handleChange = e => {
+        e.preventDefault()
+        // console.log("e.target.name "+e.target.name)
+        // console.log("e.target.value "+e.target.value)
+        // console.log("categoria "+this.state.categoria)
+        // console.log("marca "+this.state.marca)
+        // console.log("modelo "+this.state.modelo)
+        this.setState({ 
+        [e.target.name] : e.target.value
+        })
+        if(e.target.name === 'categoria')
+        {
+            this.buscador('marca')
+        }
+        else if(e.target.name === 'marca')
+        {
+            this.buscador('modelo') 
+        }
+
+    }
+
+    pepe(uno, dos) {
+        uno = "db_"+uno;
+        this.setState({ 
+            [uno] : dos
+            })
     }
 
     render() {
         return (
             <div id="div_select">
-                <Select contenido="categoria" traerInfo={this.handleState} />
+                <Select contenido="categoria" infos={this.state.db_categoria} handleChange={this.handleChange}/>
                 
-                <Select contenido="marca"  />
+                <Select contenido="marca" infos={this.state.db_marca} handleChange={this.handleChange}/>
 
-                <Select contenido="modelo" />
+                <Select contenido="modelo" infos={this.state.db_modelo} handleChange={this.handleChange}/>
 
             </div>
         )

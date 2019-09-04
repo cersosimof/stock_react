@@ -86,7 +86,7 @@ class Articulo {
         header('Access-Control-Allow-Origin:*');
 
         $instance = ConnectDb::getInstance();
-        $sql = "SELECT id_articulo, categoria FROM articulos";
+        $sql = "SELECT id_articulo, categoria FROM articulos GROUP BY categoria";
         $conn = $instance->ExecuteQuery($sql);
 
         $arr=[];

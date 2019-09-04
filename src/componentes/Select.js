@@ -2,34 +2,24 @@ import React from 'react';
 import './Selector.css';
 
 class Select extends React.Component {
-    
-    constructor(){
-        super();
-        this.state = ({
-        url : "http://localhost/stock_react/back/",
-        db : [],
-        estado : ''
-    })
+
+    state = {
+        db : this.props.contenido
     }
-    
-    UNSAFE_componentWillMount(){
-        fetch(this.state.url)
-        .then((response)=>response.json())
-        .then((responseJson)=>
-            {
-                this.setState({ 
-                db: responseJson //Guarda la info en el primer select
-                })
-            })
-        }
+
+    componentDidMount(){
+        this.setState({
+            db : this.props.contenido
+        })
+    }
 
     render() {
         return (
-            <div hidden={this.props.oculto} className="form-group col-md-10">
-                <select className="form-control" id={this.props.contenido} value={this.state.value} onChange={this.props.traerInfo}>
-                { this.state.db.map(
-                    dato=>
-                    <option key={dato.id}> {dato[this.props.contenido]} </option>
+            <div className="form-group col-md-10">
+                <select name={this.state.db} onChange={this.props.handleChange} className="form-control">
+                { this.props.infos.map(
+                    info=>
+                    <option key={info.id}>{info[this.props.contenido]}</option>
                     )
                     } 
                 </select>
