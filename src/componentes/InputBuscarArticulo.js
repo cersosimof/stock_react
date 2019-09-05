@@ -21,7 +21,7 @@ class Buscador extends React.Component {
                 <div>
                     <label for={this.props.id}>Colocar el articulo {this.props.titulo}</label>
                     <div class="input-group mb-3">
-                    <input type="text" class="form-control" placeholder=" Ejemplo  HARD3584" id={this.props.id}/>
+                    <input type="text" class="form-control" placeholder=" Ejemplo HARD3584" id={this.props.id}/>
                     <div class="input-group-append">
                         <button class="btn btn-outline-secondary" type="button" onClick={this.noRecuerdaArticulo}>¿NO RECUERDA EL CODIGO?</button>
                     </div>
