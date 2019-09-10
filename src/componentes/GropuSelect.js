@@ -2,6 +2,7 @@ import React from 'react';
 import './InputBuscarArticulo.css';
 import Select from './Select';
 
+
 export default class GrupoSelect extends React.Component {
 
     constructor(){
@@ -20,17 +21,16 @@ export default class GrupoSelect extends React.Component {
         modelo : ''
     }
 
-        buscador(clave){
-        fetch("http://localhost/stock_react/back/index.php?cat="+this.base.categoria+"&marca="+this.base.marca)
-        .then((response)=>response.json())
-        .then((responseJson)=>
-            {
-                this.setState({ 
-                    [clave] : responseJson
-                })
+    buscador(clave){
+    fetch("http://localhost/stock_react/back/index.php?cat="+this.base.categoria+"&marca="+this.base.marca+"&modelo="+this.base.modelo)
+    .then((response)=>response.json())
+    .then((responseJson)=>
+        {
+            this.setState({ 
+                [clave] : responseJson
             })
-        }
-
+        })
+    }
 
     handleChange = (e) => {
         this.base[e.target.name] = e.target.value;

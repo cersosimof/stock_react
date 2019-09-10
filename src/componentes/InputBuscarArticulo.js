@@ -8,12 +8,13 @@ class Buscador extends React.Component {
             recuerdaArticulo : true
         })
 
+
     noRecuerdaArticulo = e => {
         this.setState({
             recuerdaArticulo : !this.state.recuerdaArticulo
         })
     }
-    
+
     render() {
         if(this.state.recuerdaArticulo)
         {
@@ -21,7 +22,7 @@ class Buscador extends React.Component {
                 <div>
                     <label for={this.props.id}>Colocar el articulo {this.props.titulo}</label>
                     <div class="input-group mb-3">
-                    <input type="text" class="form-control" placeholder=" Ejemplo HARD3584" id={this.props.id}/>
+                    <input type="text" class="form-control" placeholder="Ejemplo HARD3584" id={this.props.id}/>
                     <div class="input-group-append">
                         <button class="btn btn-outline-secondary" type="button" onClick={this.noRecuerdaArticulo}>¿NO RECUERDA EL CODIGO?</button>
                     </div>
@@ -36,7 +37,7 @@ class Buscador extends React.Component {
 
                         <GrupoSelect/>
 
-                        <button type="button" class="btn btn-success">Ok</button>
+                        <button type="button" class="btn btn-success" onClick={this.child.Buscador('modelo')}>Ok</button>
                         <button type="button" onClick={this.noRecuerdaArticulo} class="btn btn-secondary">Cerrar</button>  
                     </div>
                     <hr/>
