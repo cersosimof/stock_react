@@ -1,12 +1,16 @@
 import React from 'react';
 import './InputBuscarArticulo.css';
 import GrupoSelect from './GropoSelect';
+import InputArticulo from './inputArticulo';
 
 class Buscador extends React.Component {
 
     state = ({
-            recuerdaArticulo : true
-        })
+        recuerdaArticulo : true,
+        base : [] //
+    })
+
+    valor = ''
 
     noRecuerdaArticulo = e => {
         this.setState({
@@ -14,10 +18,11 @@ class Buscador extends React.Component {
         })
     }
 
-    traerArticulo(art){
-        //document.getElementById(this.props.id).value = art
-        console.log('se ejecuta traer articulo')
-        console.log(art)
+    traerArticulo = val =>{
+        this.valor = val
+        this.setState({ base : [val]})
+        console.log(this.state.base)
+        console.log(this.valor)
     }
 
     render() {
@@ -25,13 +30,12 @@ class Buscador extends React.Component {
         {
             return (
                 <div>
-                    <label for={this.props.id}>Colocar el articulo {this.props.titulo}</label>
-                    <div class="input-group mb-3">
-                    <input type="text" class="form-control" placeholder="Ejemplo HARD3584" id={this.props.id}/>
-                    <div class="input-group-append">
-                        <button class="btn btn-outline-secondary" type="button" onClick={this.noRecuerdaArticulo}>¿NO RECUERDA EL CODIGO?</button>
-                    </div>
-                    </div>
+                    <InputArticulo
+                    valor={this.valor}
+                    id={this.props.id}
+                    noRecuerdaArticulo={this.noRecuerdaArticulo}
+                    titulo={this.props.articulo}
+                    />
                 </div>
             )
         } else {
@@ -42,6 +46,7 @@ class Buscador extends React.Component {
                         <GrupoSelect 
                         recuerdaArticulo={this.noRecuerdaArticulo}
                         traerArticulo={this.traerArticulo}
+
                         />
                     </div>
                     <hr/>

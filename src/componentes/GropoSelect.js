@@ -10,7 +10,8 @@ export default class GrupoSelect extends React.Component {
             this.state = ({ //BASES 
             categoria : [],
             marca : [],
-            modelo : []
+            modelo : [],
+            articuloCompleto : []
         })
         this.buscador('categoria');
     }
@@ -22,8 +23,8 @@ export default class GrupoSelect extends React.Component {
     }
 
     buscador(clave){
-    //fetch("http://localhost/stock_react/back/index.php?cat="+this.base.categoria+"&marca="+this.base.marca+"&modelo="+this.base.modelo)
-    fetch("http://192.168.64.2/stock_react/back/index.php?cat="+this.base.categoria+"&marca="+this.base.marca+"&modelo="+this.base.modelo)
+    fetch("http://localhost/stock_react/back/index.php?cat="+this.base.categoria+"&marca="+this.base.marca+"&modelo="+this.base.modelo)
+    //fetch("http://192.168.64.2/stock_react/back/index.php?cat="+this.base.categoria+"&marca="+this.base.marca+"&modelo="+this.base.modelo)
     .then((response)=>response.json())
     .then((responseJson)=>
         {
@@ -36,7 +37,6 @@ export default class GrupoSelect extends React.Component {
 
     handleChange = (e) => {
         this.base[e.target.name] = e.target.value;
-        console.log(e.target.name)
         if(e.target.name === 'categoria')
         {
             this.base.marca = '';
@@ -48,6 +48,14 @@ export default class GrupoSelect extends React.Component {
             this.base.modelo = '';
             this.buscador('modelo');
         }
+        else if(e.target.name === 'modelo')
+        {
+            this.buscador('articuloCompleto');
+        }
+    }
+
+    componentWillUnmount(){
+        this.props.traerArticulo(this.state.articuloCompleto)
     }
 
     render() {
@@ -67,9 +75,8 @@ export default class GrupoSelect extends React.Component {
                 contenido="modelo" 
                 infos={this.state.modelo} 
                 handleChange={this.handleChange}
-
                 />
-            <button type="button" onClick={this.props.traerArticulo(this.base.modelo)} class="btn btn-success">Ok</button>
+            <button type="button" class="btn btn-success" onClick={this.props.recuerdaArticulo}>Ok</button>
             <button type="button" onClick={this.props.recuerdaArticulo} class="btn btn-secondary">Cerrar</button>  
             </div>
         )
