@@ -22,7 +22,7 @@ class Articulo {
     }
 
     function altaArticulo($categoria, $marca, $modelo, $notas, $stockInicial, $alerta){
-        require 'ConnectDb.php';
+        require 'connectDB.php';
         $sql = "INSERT INTO articulos (id_articulo, categoria, marca, modelo, notas, stockInicial, alerta) VALUES (NULL, '$categoria', '$marca', '$modelo', '$notas', '$stockInicial', '$alerta')";
         $instance = ConnectDb::getInstance();
         $conn = $instance->ExecuteQuery($sql);
@@ -81,7 +81,8 @@ class Articulo {
     }
 
     function mostrarAlgo() {
-        require 'ConnectDb.php';
+
+        require 'connectDB.php';
         header('Content-Type: application/json');
         header('Access-Control-Allow-Origin:*');
 
@@ -99,6 +100,7 @@ class Articulo {
             ];
            $i++;
         }
+
         echo json_encode($arr);
     }
     

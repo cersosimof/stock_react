@@ -1,7 +1,7 @@
 <?php
 
 require "articulos.php";
-//require 'ConnectDb.php';
+// require 'connectDB.php';
 
 $categoria = $_GET["cat"];
 $marca = $_GET["marca"];
@@ -10,14 +10,33 @@ $modelo = $_GET["modelo"];
 //SI NO TIENE NADA CARGADO
 if($categoria == '' && $categoria == '' && $modelo == ''){
 
-    $articuloCreado = new Articulo();
-    $result = $articuloCreado->mostrarAlgo();
+    require 'connectDB.php';
+    header('Content-Type: application/json');
+    header('Access-Control-Allow-Origin:*');
+
+    $instance = ConnectDb::getInstance();
+    $sql = "SELECT id_articulo, categoria FROM articulos GROUP BY categoria";
+    $conn = $instance->ExecuteQuery($sql);
+
+    $arr=[];
+    $i=0;
+
+    while ($fila = mysqli_fetch_assoc($conn)) {
+        $arr[$i]=[
+            "id"=>$fila["id_articulo"],
+            "categoria"=>$fila["categoria"]
+        ];
+       $i++;
+    }
+
+    echo json_encode($arr);
     }
 //SI TIENE CARGADO CATEGORIA
 else if($categoria != '' && $marca == '' && $modelo == ''){
-    require 'ConnectDb.php';
+    require 'connectDB.php';
+
     $instance = ConnectDb::getInstance();
-    $sql = "SELECT id_articulo, marca FROM articulos WHERE categoria = '$categoria'";
+    $sql = "SELECT id_articulo, marca FROM articulos WHERE categoria = '$categoria' GROUP BY marca";
     $conn = $instance->ExecuteQuery($sql);
 
     $arr_mar=[];
@@ -30,17 +49,17 @@ else if($categoria != '' && $marca == '' && $modelo == ''){
         ];
         $i++;
     }
-
-    header('Content-Type: application/json');
     header('Access-Control-Allow-Origin:*');
+    header('Content-Type: application/json');
+
     echo json_encode($arr_mar);
 }
 //SI TIENE CATEGORIA Y MARCA
 else if($categoria != '' && $marca != '' && $modelo == '')
 {
-    require 'ConnectDb.php';
+    require 'connectDB.php';
     $instance = ConnectDb::getInstance();
-    $sql = "SELECT id_articulo, modelo FROM articulos WHERE categoria = '$categoria' AND marca = '$marca' GROUP BY marca";
+    $sql = "SELECT id_articulo, modelo FROM articulos WHERE categoria = '$categoria' AND marca = '$marca'";
     $conn = $instance->ExecuteQuery($sql);
 
     $arr_mar=[];

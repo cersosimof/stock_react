@@ -1,6 +1,6 @@
 import React from 'react';
 import './InputBuscarArticulo.css';
-import GrupoSelect from './GropuSelect';
+import GrupoSelect from './GropoSelect';
 
 class Buscador extends React.Component {
 
@@ -8,11 +8,16 @@ class Buscador extends React.Component {
             recuerdaArticulo : true
         })
 
-
     noRecuerdaArticulo = e => {
         this.setState({
             recuerdaArticulo : !this.state.recuerdaArticulo
         })
+    }
+
+    traerArticulo(art){
+        //document.getElementById(this.props.id).value = art
+        console.log('se ejecuta traer articulo')
+        console.log(art)
     }
 
     render() {
@@ -34,11 +39,10 @@ class Buscador extends React.Component {
                 <div>
                     <div align="center">
                         <h4>Buscador de Articulo</h4>
-
-                        <GrupoSelect/>
-
-                        <button type="button" class="btn btn-success" onClick={this.child.Buscador('modelo')}>Ok</button>
-                        <button type="button" onClick={this.noRecuerdaArticulo} class="btn btn-secondary">Cerrar</button>  
+                        <GrupoSelect 
+                        recuerdaArticulo={this.noRecuerdaArticulo}
+                        traerArticulo={this.traerArticulo}
+                        />
                     </div>
                     <hr/>
                 </div>
