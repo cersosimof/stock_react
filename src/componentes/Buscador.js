@@ -1,5 +1,4 @@
 import React from 'react';
-import './InputBuscarArticulo.css';
 import GrupoSelect from './GropoSelect';
 import InputArticulo from './inputArticulo';
 
@@ -7,12 +6,12 @@ class Buscador extends React.Component {
 
     state = ({
         recuerdaArticulo : true,
-        base : [] //
+        base : [] 
     })
 
     valor = ''
 
-    noRecuerdaArticulo = e => {
+    noRecuerdaArticulo = () => {
         this.setState({
             recuerdaArticulo : !this.state.recuerdaArticulo
         })
@@ -21,8 +20,6 @@ class Buscador extends React.Component {
     traerArticulo = val =>{
         this.valor = val
         this.setState({ base : [val]})
-        console.log(this.state.base)
-        console.log(this.valor)
     }
 
     render() {
@@ -46,7 +43,6 @@ class Buscador extends React.Component {
                         <GrupoSelect 
                         recuerdaArticulo={this.noRecuerdaArticulo}
                         traerArticulo={this.traerArticulo}
-
                         />
                     </div>
                     <hr/>

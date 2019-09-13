@@ -1,5 +1,4 @@
 import React from 'react';
-import './InputBuscarArticulo.css';
 import Select from './Select';
 
 
@@ -76,8 +75,8 @@ export default class GrupoSelect extends React.Component {
                 infos={this.state.modelo} 
                 handleChange={this.handleChange}
                 />
-            <button type="button" class="btn btn-success" onClick={this.props.recuerdaArticulo}>Ok</button>
-            <button type="button" onClick={this.props.recuerdaArticulo} class="btn btn-secondary">Cerrar</button>  
+            <button type="button" className="btn btn-success" onClick={this.props.recuerdaArticulo}>Ok</button>
+            <button type="button" onClick={this.props.recuerdaArticulo} className="btn btn-secondary">Cerrar</button>  
             </div>
         )
     }

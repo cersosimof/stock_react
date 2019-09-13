@@ -17,6 +17,7 @@ class App extends React.Component {
     this.setState({
         opcion : e.target.id
     })
+    console.log(e.target.id)
   };
 
   render() {

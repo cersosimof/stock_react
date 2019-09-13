@@ -83,7 +83,7 @@ else
 {
     require 'ConnectDb.php';
     $instance = ConnectDb::getInstance();
-    $sql = "SELECT id_articulo, categoria, marca, modelo FROM articulos WHERE categoria = '$categoria' AND marca = '$marca' AND modelo = '$modelo'";
+    $sql = "SELECT id_articulo, categoria, marca, modelo, stockInicial FROM articulos WHERE categoria = '$categoria' AND marca = '$marca' AND modelo = '$modelo'";
     $conn = $instance->ExecuteQuery($sql);
 
     $arr_mar=[];
@@ -94,7 +94,8 @@ else
             "id"=>$fila["id_articulo"],
             "categoria"=>$fila["categoria"],
             "marca"=>$fila["marca"],
-            "modelo"=>$fila["modelo"]
+            "modelo"=>$fila["modelo"],
+            "stock"=>$fila["stockInicial"]
         ];
         $i++;
     }

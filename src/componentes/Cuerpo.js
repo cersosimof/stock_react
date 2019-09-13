@@ -1,8 +1,22 @@
 import React from 'react';
-import Buscador from './InputBuscarArticulo';
+import Buscador from './Buscador';
+import Cantidad from './Cantidad';
+
+/*
+CUERPO INCLUYE TODO EL FORM
+BUSCADOR
+    GRUPO SELECT
+        SELECT
+        SELECT
+        SELECT
+*/
 
 class Cuerpo extends React.Component {
 
+    ejecutarAccion = (e) =>{
+        console.log(document.querySelector("#art").value)
+        console.log(document.querySelector("#eti_"+this.props.mostrar).value)
+    }
 
     render() {
         if(this.props.mostrar === "ingresar")
@@ -12,23 +26,13 @@ class Cuerpo extends React.Component {
                 <hr/> 
                     <div className="jumbotron">
                         <form>
-                            <div id="info_ingresar">
-                                {/*PRESENTA INFO, ALERTAS*/}
-                            </div>
                             {<Buscador  id="_ingresar" titulo="a ingresar"/>}
-                            <div className="form-group row" id="divCantidad">
-                                <label htmlFor="idCantidad" className="col-sm-2 col-form-label" id="labelCantidad">Cantidad a Ingresar</label>
-                                <div className="col-sm-10">
-                                    <input type="text" className="form-control" id="cantidad_ingresar"/>
-                                </div>
-                            </div>
-                            <div id="lugarBoton">
-                                <button className="btn btn-success" id="bsi">Ingresar</button>
-                            </div>
+                            {<Cantidad id="_ingresar" titulo="a ingresar"/>}
+                            <button type="button" onClick={this.ejecutarAccion} className="btn btn-secondary btn-lg btn-block">Ingresar</button>
                         </form>
                     </div>                   
                 </div>
-            );
+            )
         }
         else if(this.props.mostrar === "entregar")
         {
@@ -37,25 +41,15 @@ class Cuerpo extends React.Component {
                 <hr/>
                     <div className="jumbotron">
                         <form>
-                            <div id="info_entregar">
-                                {/*PRESENTA INFO, ALERTAS*/}
-                            </div>
                             {<Buscador id="_entregar" titulo="a entregar"/>}
+                            {<Cantidad id="_ingresar" titulo="a entregar"/>}
                             <div className="form-group row">
-                                <label for="idCantidad" className="col-sm-2 col-form-label">Cantidad a retirar</label>
-                                <div className="col-sm-10">
-                                    <input type="text" className="form-control" id="cantidad_entregar"/>
-                                </div>
-                            </div>
-                            <div className="form-group row">
-                                <label for="idDestino" className="col-sm-2 col-form-label">Destinatario</label>
+                                <label htmlFor="idDestino" className="col-sm-2 col-form-label">Destinatario</label>
                                 <div className="col-sm-10">
                                     <input type="text" className="form-control" id="idDestino"/>
                                 </div>
                             </div>       
-                            <div id="lugarBoton">
-                                <button className="btn btn-danger" id="bse">Entregar</button>
-                            </div>
+                            <button type="button" class="btn btn-secondary btn-lg btn-block">Entregar</button>
                         </form>
                     </div>
                 </div>
