@@ -12,19 +12,24 @@ class App extends React.Component {
     });
   }
 
+  solapa = {
+    activa : 'ingresar'
+  }
+
   handleState = e => {
     e.preventDefault();
     this.setState({
         opcion : e.target.id
     })
-    console.log(e.target.id)
+    this.solapa.activa = e.target.id
+    console.log(this.solapa.activa)
   };
 
   render() {
     return (
       <div>
         <Selector handleState={this.handleState} />
-        <Cuerpo mostrar={this.state.opcion}/>
+        <Cuerpo mostrar={this.solapa.activa}/>
       </div>
     );
   }

@@ -16,6 +16,7 @@ class Cuerpo extends React.Component {
     ejecutarAccion = (e) =>{
         console.log(document.querySelector("#art").value)
         console.log(document.querySelector("#eti_"+this.props.mostrar).value)
+        console.log(this.props.mostrar)
     }
 
     render() {
@@ -42,14 +43,14 @@ class Cuerpo extends React.Component {
                     <div className="jumbotron">
                         <form>
                             {<Buscador id="_entregar" titulo="a entregar"/>}
-                            {<Cantidad id="_ingresar" titulo="a entregar"/>}
+                            {<Cantidad id="_entregar" titulo="a entregar"/>}
                             <div className="form-group row">
                                 <label htmlFor="idDestino" className="col-sm-2 col-form-label">Destinatario</label>
                                 <div className="col-sm-10">
                                     <input type="text" className="form-control" id="idDestino"/>
                                 </div>
                             </div>       
-                            <button type="button" class="btn btn-secondary btn-lg btn-block">Entregar</button>
+                            <button type="button" onClick={this.ejecutarAccion} className="btn btn-secondary btn-lg btn-block">Entregar</button>
                         </form>
                     </div>
                 </div>
