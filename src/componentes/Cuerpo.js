@@ -14,9 +14,20 @@ BUSCADOR
 class Cuerpo extends React.Component {
 
     ejecutarAccion = (e) =>{
-        console.log(document.querySelector("#art").value)
-        console.log(document.querySelector("#eti_"+this.props.mostrar).value)
-        console.log(this.props.mostrar)
+        e.preventDefault();
+        let nroArticulo = document.querySelector("#_"+this.props.mostrar).value;
+        let cantidad = document.querySelector("#eti_"+this.props.mostrar).value;
+        let accion = this.props.mostrar;
+        console.log(nroArticulo +" - "+ cantidad +" - "+ accion)
+
+        fetch("http://localhost/stock_react/back/acciones.php?codigo="+nroArticulo+"&cantidad="+cantidad+"&accion="+accion)
+            .then((response)=>console.log(response))
+
+            .catch((error) => {
+                alert('Error, intente nuevamente.')
+                console.log(error)
+            })
+
     }
 
     render() {

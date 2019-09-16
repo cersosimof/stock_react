@@ -46,9 +46,8 @@ class Articulo {
         $conn2 = $instance->ExecuteQuery($sql2);
         
         if($conn2 == 1) {
-            return $nuevoStock;
+            echo $nuevoStock;
         }
-
     }
 
     function reducirCantidad($id_articulo, $cantidad) 

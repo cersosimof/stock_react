@@ -5,11 +5,10 @@ import InputArticulo from './inputArticulo';
 class Buscador extends React.Component {
 
     state = ({
-        recuerdaArticulo : true,
-        base : [] 
+        recuerdaArticulo : true
     })
 
-    valor = ''
+    valor = '';
 
     noRecuerdaArticulo = () => {
         this.setState({
@@ -19,7 +18,9 @@ class Buscador extends React.Component {
 
     traerArticulo = val =>{
         this.valor = val
-        this.setState({ base : [val]})
+        this.setState({ 
+            recuerdaArticulo : !this.state.recuerdaArticulo
+        })
     }
 
     render() {

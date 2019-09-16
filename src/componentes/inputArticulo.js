@@ -21,7 +21,7 @@ export default class InputArticulo extends React.Component {
             return (
                 <div>
                     <h3>Informacion del Arcitulo</h3>
-                    <InputNormal id="art" titulo="Nro. Articulo: " valor={this.props.valor[0].id}/>                   
+                    <InputNormal id={this.props.id} titulo="Nro. Articulo: " valor={this.props.valor[0].id}/>                   
                     <InputNormal id="cat" titulo="Categoria: " valor={this.props.valor[0].categoria}/>
                     <InputNormal id="marca" titulo="Marca: " valor={this.props.valor[0].marca}/>
                     <InputNormal id="mod" titulo="Modelo: " valor={this.props.valor[0].modelo}/>

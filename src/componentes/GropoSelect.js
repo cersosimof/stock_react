@@ -23,13 +23,15 @@ export default class GrupoSelect extends React.Component {
 
     buscador(clave){
     fetch("http://localhost/stock_react/back/index.php?cat="+this.base.categoria+"&marca="+this.base.marca+"&modelo="+this.base.modelo)
-    //fetch("http://192.168.64.2/stock_react/back/index.php?cat="+this.base.categoria+"&marca="+this.base.marca+"&modelo="+this.base.modelo)
-    .then((response)=>response.json())
-    .then((responseJson)=>
-        {
-            this.setState({ 
-                [clave] : responseJson
+        .then((response)=>response.json())
+        .then((responseJson)=>
+            {
+                this.setState({ 
+                    [clave] : responseJson
+                })
             })
+        .catch((error) => {
+            console.log('Error: ', error)
         })
     }
 
@@ -53,8 +55,8 @@ export default class GrupoSelect extends React.Component {
         }
     }
 
-    componentWillUnmount(){
-        this.props.traerArticulo(this.state.articuloCompleto)
+    buscarYModificar = e => {
+            this.props.traerArticulo(this.state.articuloCompleto)   
     }
 
     render() {
@@ -75,7 +77,7 @@ export default class GrupoSelect extends React.Component {
                 infos={this.state.modelo} 
                 handleChange={this.handleChange}
                 />
-            <button type="button" className="btn btn-success" onClick={this.props.recuerdaArticulo}>Ok</button>
+            <button type="button" className="btn btn-success" onClick={this.buscarYModificar}>Ok</button>
             <button type="button" onClick={this.props.recuerdaArticulo} className="btn btn-secondary">Cerrar</button>  
             </div>
         )
