@@ -21,8 +21,11 @@ class Cuerpo extends React.Component {
         console.log(nroArticulo +" - "+ cantidad +" - "+ accion)
 
         fetch("http://localhost/stock_react/back/acciones.php?codigo="+nroArticulo+"&cantidad="+cantidad+"&accion="+accion)
-            .then((response)=>console.log(response))
-
+        .then((response)=>response.json())
+        .then((responseJson)=>
+            {
+                console.log(responseJson)
+            })
             .catch((error) => {
                 alert('Error, intente nuevamente.')
                 console.log(error)
