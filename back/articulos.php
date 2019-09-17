@@ -46,7 +46,7 @@ class Articulo {
         $conn2 = $instance->ExecuteQuery($sql2);
         
         if($conn2 == 1) {
-            echo $nuevoStock;
+            echo 1;
         }
     }
 
@@ -74,7 +74,7 @@ class Articulo {
             $conn2 = $instance->ExecuteQuery($sql2);
             if($conn2 == 1) 
             {
-                return $stockActual;
+                echo 1;
             }
         }
     }

@@ -18,19 +18,21 @@ class Cuerpo extends React.Component {
         let nroArticulo = document.querySelector("#_"+this.props.mostrar).value;
         let cantidad = document.querySelector("#eti_"+this.props.mostrar).value;
         let accion = this.props.mostrar;
-        console.log(nroArticulo +" - "+ cantidad +" - "+ accion)
+        console.log("EjecutarAccion "+nroArticulo +" - "+ cantidad +" - "+ accion)
 
         fetch("http://localhost/stock_react/back/acciones.php?codigo="+nroArticulo+"&cantidad="+cantidad+"&accion="+accion)
         .then((response)=>response.json())
         .then((responseJson)=>
             {
-                console.log(responseJson)
+                if(responseJson===1)
+                {
+                    alert("Se actualizo el Stock")
+                }
             })
             .catch((error) => {
                 alert('Error, intente nuevamente.')
                 console.log(error)
             })
-
     }
 
     render() {

@@ -8,8 +8,10 @@ $accion = $_GET["accion"];
 
 
 if($accion == 'ingresar'){
-
     $articuloCreado = new Articulo();
-    $result = $articuloCreado->aumentarCantidad($codigo, $cantidad);
-    
-    }
+    $result = $articuloCreado->aumentarCantidad($codigo, $cantidad);    
+}
+else if($accion == 'retirar'){
+    $articuloCreado = new Articulo();
+    $result = $articuloCreado->reducirCantidad($codigo, $cantidad);    
+}

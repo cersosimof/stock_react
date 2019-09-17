@@ -77,8 +77,23 @@ export default class GrupoSelect extends React.Component {
                 infos={this.state.modelo} 
                 handleChange={this.handleChange}
                 />
-            <button type="button" className="btn btn-success" onClick={this.buscarYModificar}>Ok</button>
-            <button type="button" onClick={this.props.recuerdaArticulo} className="btn btn-secondary">Cerrar</button>  
+
+
+                <div class="btn-group btn-group-toggle" data-toggle="buttons">
+  <label class="btn btn-secondary active">
+    <input type="radio" name="options" onClick={this.buscarYModificar} id="option1" autocomplete="off" checked/> OK
+  </label>
+  {/* <label class="btn btn-secondary">
+    <input type="radio" name="options" id="option2" autocomplete="off"/> Radio
+  </label> */}
+  <label class="btn btn-secondary">
+    <input type="radio" onClick={this.props.recuerdaArticulo} name="options" id="option3" autocomplete="off"/> Cerrar
+  </label>
+</div>
+
+
+            {/* <button type="button" className="btn btn-success" onClick={this.buscarYModificar}>Ok</button>
+            <button type="button" onClick={this.props.recuerdaArticulo} className="btn btn-secondary">Cerrar</button>   */}
             </div>
         )
     }

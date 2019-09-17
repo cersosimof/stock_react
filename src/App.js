@@ -18,11 +18,11 @@ class App extends React.Component {
 
   handleState = e => {
     e.preventDefault();
+    //e.target.classList.toggle("resaltado");
     this.setState({
         opcion : e.target.id
     })
-    this.solapa.activa = e.target.id
-    console.log(this.solapa.activa)
+    this.solapa.activa = e.target.id;
   };
 
   render() {
