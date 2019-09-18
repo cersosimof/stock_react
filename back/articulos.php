@@ -64,7 +64,7 @@ class Articulo {
         //SI LA CANTIDAD QUE SE QUIERE SACAR ES MAYOR QUE LA QUE TIENE EN STOCK ENVIA MENSAJE 
         if($stockActual < $cantidad) 
         {
-            return "supera";
+            echo "supera";
         } 
         else 
         {

@@ -20,7 +20,7 @@ class Cuerpo extends React.Component {
         let accion = this.props.mostrar;
         console.log("EjecutarAccion "+nroArticulo +" - "+ cantidad +" - "+ accion)
 
-        fetch("http://localhost/stock_react/back/acciones.php?codigo="+nroArticulo+"&cantidad="+cantidad+"&accion="+accion)
+        fetch("http://localhost/stock_react/back/acciones.php?codigo="+nroArticulo+"&cantidad="+cantidad+"&accion="+accion+"")
         .then((response)=>response.json())
         .then((responseJson)=>
             {
