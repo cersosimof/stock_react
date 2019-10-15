@@ -1,7 +1,12 @@
+/*
+
+BARRA DE CAMBIO DE ESTADO
+
+*/
+
 import React from 'react';
 
 class Selector extends React.Component {
-
 
     render() {
         return (

@@ -1,5 +1,5 @@
 import React from 'react';
-import GrupoSelect from './GropoSelect';
+import GrupoSelect from './busca_articulo/GropoSelect';
 import InputArticulo from './inputArticulo';
 
 class Buscador extends React.Component {

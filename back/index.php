@@ -81,7 +81,7 @@ else if($categoria != '' && $marca != '' && $modelo == '')
 //SI TIENE LOS 3
 else
 {
-    require 'ConnectDb.php';
+    require 'connectDB.php';
     $instance = ConnectDb::getInstance();
     $sql = "SELECT id_articulo, categoria, marca, modelo, stockInicial FROM articulos WHERE categoria = '$categoria' AND marca = '$marca' AND modelo = '$modelo'";
     $conn = $instance->ExecuteQuery($sql);

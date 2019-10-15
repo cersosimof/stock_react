@@ -3,12 +3,7 @@ import Buscador from './Buscador';
 import Cantidad from './Cantidad';
 
 /*
-CUERPO INCLUYE TODO EL FORM
-BUSCADOR
-    GRUPO SELECT
-        SELECT
-        SELECT
-        SELECT
+CONTINENE TODO LO QUE ESTA POR DEBAJO DE LA BARRA SELECTORA
 */
 
 class Cuerpo extends React.Component {
@@ -18,9 +13,8 @@ class Cuerpo extends React.Component {
         let nroArticulo = document.querySelector("#_"+this.props.mostrar).value;
         let cantidad = document.querySelector("#eti_"+this.props.mostrar).value;
         let accion = this.props.mostrar;
-        console.log("EjecutarAccion "+nroArticulo +" - "+ cantidad +" - "+ accion)
 
-        fetch("http://localhost/stock_react/back/acciones.php?codigo="+nroArticulo+"&cantidad="+cantidad+"&accion="+accion+"")
+        fetch("http://192.168.64.2/stock_react/back/acciones.php?codigo="+nroArticulo+"&cantidad="+cantidad+"&accion="+accion+"")
         .then((response)=>response.json())
         .then((responseJson)=>
             {
@@ -31,7 +25,7 @@ class Cuerpo extends React.Component {
             })
             .catch((error) => {
                 alert('Error, intente nuevamente.')
-                console.log(error)
+                console.error(error)
             })
     }
 

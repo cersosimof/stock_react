@@ -1,7 +1,6 @@
 import React from 'react';
 import Select from './Select';
 
-
 export default class GrupoSelect extends React.Component {
 
     constructor(){
@@ -22,7 +21,7 @@ export default class GrupoSelect extends React.Component {
     }
 
     buscador(clave){
-    fetch("http://localhost/stock_react/back/index.php?cat="+this.base.categoria+"&marca="+this.base.marca+"&modelo="+this.base.modelo)
+    fetch("http://192.168.64.2/stock_react/back/index.php?cat="+this.base.categoria+"&marca="+this.base.marca+"&modelo="+this.base.modelo)
         .then((response)=>response.json())
         .then((responseJson)=>
             {
@@ -52,6 +51,7 @@ export default class GrupoSelect extends React.Component {
         else if(e.target.name === 'modelo')
         {
             this.buscador('articuloCompleto');
+            console.log(this.state.articuloCompleto)
         }
     }
 
@@ -79,21 +79,16 @@ export default class GrupoSelect extends React.Component {
                 />
 
 
-                <div class="btn-group btn-group-toggle" data-toggle="buttons">
-  <label class="btn btn-secondary active">
-    <input type="radio" name="options" onClick={this.buscarYModificar} id="option1" autocomplete="off" checked/> OK
-  </label>
-  {/* <label class="btn btn-secondary">
-    <input type="radio" name="options" id="option2" autocomplete="off"/> Radio
-  </label> */}
-  <label class="btn btn-secondary">
-    <input type="radio" onClick={this.props.recuerdaArticulo} name="options" id="option3" autocomplete="off"/> Cerrar
-  </label>
-</div>
+                <div className="btn-group btn-group-toggle" data-toggle="buttons">
+                <label className="btn btn-secondary active">
+                    <input type="radio" name="options" onClick={this.buscarYModificar} id="option1" autoComplete="off"/> OK
+                </label>
 
+                <label className="btn btn-secondary">
+                    <input type="radio" onClick={this.props.recuerdaArticulo} name="options" id="option3" autoComplete="off"/> Cerrar
+                </label>
+                </div>
 
-            {/* <button type="button" className="btn btn-success" onClick={this.buscarYModificar}>Ok</button>
-            <button type="button" onClick={this.props.recuerdaArticulo} className="btn btn-secondary">Cerrar</button>   */}
             </div>
         )
     }

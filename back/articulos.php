@@ -33,7 +33,7 @@ class Articulo {
 
     // METODOS
     function aumentarCantidad($id_articulo, $cantidad) {
-        require 'ConnectDb.php';
+        require 'connectDB.php';
         $instance = ConnectDb::getInstance();
 
         $sql = "SELECT stockInicial FROM articulos WHERE id_articulo = '$id_articulo' ";
@@ -52,7 +52,7 @@ class Articulo {
 
     function reducirCantidad($id_articulo, $cantidad) 
     {
-        require 'ConnectDb.php';
+        require 'connectDB.php';
         $instance = ConnectDb::getInstance();
 
         // CALCULA EL STOCK INICIAL DEL ARTICULO Y LO GUARDA EN LA FUNCION $nuevoStock
@@ -81,7 +81,7 @@ class Articulo {
 
     function mostrarAlgo() {
 
-        require 'connectDB.php';
+        require 'ConnectDB.php';
         header('Content-Type: application/json');
         header('Access-Control-Allow-Origin:*');
 
