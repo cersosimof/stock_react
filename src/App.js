@@ -18,7 +18,6 @@ class App extends React.Component {
 
   handleState = e => {
     e.preventDefault();
-    //e.target.classList.toggle("resaltado");
     this.setState({
         opcion : e.target.id
     })

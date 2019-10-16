@@ -1,6 +1,8 @@
 import React from 'react';
 import Buscador from './Buscador';
 import Cantidad from './Cantidad';
+import Boton from './Boton'
+import InputNormal from './InputNormal';
 
 /*
 CONTINENE TODO LO QUE ESTA POR DEBAJO DE LA BARRA SELECTORA
@@ -39,7 +41,7 @@ class Cuerpo extends React.Component {
                         <form>
                             {<Buscador  id="_ingresar" titulo="a ingresar"/>}
                             {<Cantidad id="_ingresar" titulo="a ingresar"/>}
-                            <button type="button" onClick={this.ejecutarAccion} className="btn btn-secondary btn-lg btn-block">Ingresar</button>
+                            {<Boton onClick={this.ejecutarAccion} texto="Ingresar"/>}
                         </form>
                     </div>                   
                 </div>
@@ -54,13 +56,8 @@ class Cuerpo extends React.Component {
                         <form>
                             {<Buscador id="_entregar" titulo="a entregar"/>}
                             {<Cantidad id="_entregar" titulo="a entregar"/>}
-                            <div className="form-group row">
-                                <label htmlFor="idDestino" className="col-sm-2 col-form-label">Destinatario</label>
-                                <div className="col-sm-10">
-                                    <input type="text" className="form-control" id="idDestino"/>
-                                </div>
-                            </div>       
-                            <button type="button" onClick={this.ejecutarAccion} className="btn btn-secondary btn-lg btn-block">Entregar</button>
+                            {<InputNormal titulo='Destinatario' id='idDestino' value='' visible={false}/>}
+                            {<Boton onClick={this.ejecutarAccion} texto="Entregar"/>}
                         </form>
                     </div>
                 </div>
@@ -75,9 +72,6 @@ class Cuerpo extends React.Component {
                         <form>
                             <input type="hidden" id="selector" value="consultar"/>
                             {<Buscador id="_consultar"/>}
-                            <div id="lugarBoton">
-                                <button className="btn btn-success" id="botonSubmit">Consultar Stock</button>
-                            </div> 
                         </form>
                     </div>
                 </div>
