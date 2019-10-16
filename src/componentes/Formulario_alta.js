@@ -1,7 +1,7 @@
 import React from 'react';
 
 
-class Formulario extends React.Component {
+class Formulario_alta extends React.Component {
 
     state = {
         categoria : "",
@@ -24,6 +24,8 @@ class Formulario extends React.Component {
     render() {
         return (
             <div>
+            <hr/>
+            <div className="jumbotron">
                 <h2>{this.props.titulo}</h2>
                 <form action='?enviando=1' onSubmit={this.onsubmit} method='POST' className="needs-validation">
                     <div className="form-row">
@@ -56,11 +58,13 @@ class Formulario extends React.Component {
                             <input type="text" name="alerta" className="form-control" onChange={this.onchange} id="idAlerta" value={this.state.alerta}/>
                         </div>
                     </div>
-                    <button className="btn btn-primary" id="btnSubmit" type="submit">Dar ingreso!</button>
+                    
+                    <button className="btn btn-secondary btn-lg btn-block" id="btnSubmit" type="submit">Dar ingreso!</button>
                 </form>
+            </div>
             </div>
         );
     }
 }
 
-export default Formulario;
+export default Formulario_alta;
