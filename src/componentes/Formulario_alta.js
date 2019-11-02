@@ -14,20 +14,33 @@ class Formulario_alta extends React.Component {
 
     onchange = e => {
         this.setState({ [e.target.name] : e.target.value })
-        console.log(e.target.value)
     }
 
     onsubmit = e => {
         e.preventDefault();
         console.log("Se envio el formulario...")
+
+        fetch("http://localhost:8080/stock/altaArt.jsp?categoria="+this.state.categoria+"&marca="+this.state.marca+"&modelo="+this.state.modelo+"&notas="+this.state.notas+"&stock="+this.state.stock+"&alerta="+this.state.alerta)
+        .then(function(response) {
+            return response.text()
+          })
+          .then(function(texto) {
+            console.log(texto);
+          })
+        .catch((error) => {
+            console.log('Error: ', error)
+        })
     }
+
+        
+
     render() {
         return (
             <div>
             <hr/>
             <div className="jumbotron">
                 <h2>{this.props.titulo}</h2>
-                <form action='?enviando=1' onSubmit={this.onsubmit} method='POST' className="needs-validation">
+                <form action='#' onSubmit={this.onsubmit} method='POST' className="needs-validation">
                     <div className="form-row">
                         <div className="col-md-4 mb-3">
                             <label htmlFor="idCat">Categoria</label>
