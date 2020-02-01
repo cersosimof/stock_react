@@ -1,7 +1,7 @@
 import React from 'react';
-import Buscador from '../Buscador';
-import Cantidad from '../Cantidad';
-import Boton from '../Boton'
+import Buscador from '../componentes/Buscador';
+import Cantidad from '../componentes/Cantidad';
+import Boton from '../componentes/Boton'
 
 class Ingresar extends React.Component {
 

@@ -1,8 +1,8 @@
 import React from 'react';
-import Buscador from '../Buscador';
-import Cantidad from '../Cantidad';
-import Boton from '../Boton';
-import InputNormal from '../InputNormal'
+import Buscador from '../componentes/Buscador';
+import Cantidad from '../componentes/Cantidad';
+import Boton from '../componentes/Boton';
+import InputNormal from '../componentes/InputNormal'
 
 class Entregar extends React.Component {
     render(){
