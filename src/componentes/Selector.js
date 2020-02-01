@@ -11,9 +11,9 @@ import {
     Route,
     Link
   } from "react-router-dom";
-  import FormularioAlta from './Formulario_alta';
-  import Ingresar from './Ingresar'
-  import Entregar from './Entregar'
+  import FormularioAlta from './vistas/cuerpoFormularioAlta';
+  import Ingresar from './vistas/cuerpoIngresar'
+  import Entregar from './vistas/cuerpoEntregar'
 
 class Selector extends React.Component {
 
