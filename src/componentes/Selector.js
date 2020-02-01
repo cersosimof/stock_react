@@ -9,10 +9,9 @@ import {
     BrowserRouter as Router,
     Switch,
     Route,
-    Link,
-    useParams
+    Link
   } from "react-router-dom";
-  import Formulario_alta from './Formulario_alta';
+  import FormularioAlta from './Formulario_alta';
   import Ingresar from './Ingresar'
   import Entregar from './Entregar'
 
@@ -23,6 +22,9 @@ class Selector extends React.Component {
             <Router>
             <div>
                 <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
+                    <a class="navbar-brand" href="/">
+                        <i class="fas fa-layer-group"></i>
+                    </a>
                     <Link className="navbar-brand" href="/">STOCK</Link>
                     <div className="collapse navbar-collapse" id="navbarText">
                         <ul className="navbar-nav mr-auto">
@@ -45,7 +47,7 @@ class Selector extends React.Component {
 
                 <Switch>
                     <Route exact path="/alta">
-                        <Formulario_alta />
+                        <FormularioAlta />
                     </Route>
                     <Route exact path="/ingresar">
                         <Ingresar />
